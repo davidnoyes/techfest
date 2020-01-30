@@ -1,0 +1,23 @@
+---
+# Source: kubeinvaders/templates/ingress.yaml
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: guestbook
+  namespace: guestbook
+  labels:
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  tls:
+    - hosts:
+        - "chart-example.local"
+      secretName: chart-example-tls
+  rules:
+    - host: "guestbook.local"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: frontend
+              servicePort: http

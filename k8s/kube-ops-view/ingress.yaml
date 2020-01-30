@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kube-ops-view
+  namespace: kube-ops-view
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  rules:
+  - host: "kube-ops-view.local"
+    http:
+      paths:
+      - backend:
+          serviceName: kube-ops-view
+          servicePort: 80

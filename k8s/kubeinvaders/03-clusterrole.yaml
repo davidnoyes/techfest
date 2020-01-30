@@ -1,0 +1,16 @@
+---
+# Source: kubeinvaders/templates/clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubeinvaders
+  namespace: kubeinvaders
+  labels:
+    app: kubeinvaders
+    chart: kubeinvaders-0.1.0
+    release: kubeinvaders
+    heritage: Helm
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list", "delete"]
